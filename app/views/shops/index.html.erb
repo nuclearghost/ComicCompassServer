@@ -1,0 +1,63 @@
+<h1>Listing shops</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>Address</th>
+      <th>Address2</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Scf</th>
+      <th>Zip</th>
+      <th>Zip4</th>
+      <th>Mailscore</th>
+      <th>Sic1code</th>
+      <th>Sic1</th>
+      <th>Sic2code</th>
+      <th>Sic2</th>
+      <th>Sic3code</th>
+      <th>Sic3</th>
+      <th>Sic4code</th>
+      <th>Sic4</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shops.each do |shop| %>
+      <tr>
+        <td><%= shop.company %></td>
+        <td><%= shop.address %></td>
+        <td><%= shop.address2 %></td>
+        <td><%= shop.city %></td>
+        <td><%= shop.state %></td>
+        <td><%= shop.scf %></td>
+        <td><%= shop.zip %></td>
+        <td><%= shop.zip4 %></td>
+        <td><%= shop.mailscore %></td>
+        <td><%= shop.sic1code %></td>
+        <td><%= shop.sic1 %></td>
+        <td><%= shop.sic2code %></td>
+        <td><%= shop.sic2 %></td>
+        <td><%= shop.sic3code %></td>
+        <td><%= shop.sic3 %></td>
+        <td><%= shop.sic4code %></td>
+        <td><%= shop.sic4 %></td>
+        <td><%= shop.latitude %></td>
+        <td><%= shop.longitude %></td>
+        <td><%= link_to 'Show', shop %></td>
+        <td><%= link_to 'Edit', edit_shop_path(shop) %></td>
+        <td><%= link_to 'Destroy', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Shop', new_shop_path %>
