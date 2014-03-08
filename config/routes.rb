@@ -7,6 +7,7 @@ ComicCompass::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'shops#index'
 
+  get 'search' => 'shops#query'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

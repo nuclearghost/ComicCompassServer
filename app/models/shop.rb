@@ -7,7 +7,7 @@ class Shop < ActiveRecord::Base
 
 	geocoded_by :address_str
 
-	after_validation :geocode 
+	after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? } 
 
 def address_str
   [self.address, self.city, self.state, 'US'].compact.join(', ')

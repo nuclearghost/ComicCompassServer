@@ -61,6 +61,20 @@ class ShopsController < ApplicationController
     end
   end
 
+  def query
+    if (params[:latitude] == nil)
+      return render :status => :bad_request, :text => "Missing required parameter latitude"
+    elsif  (params[:longitude] == nil)
+      return render :status => :bad_request, :text => "Missing required parameter longitude"
+    end
+
+    @shops = Shop.near([params[:latitude], params[:longitude]], 20) 
+    respond_to do |format|
+      format.html { render action: 'index'}
+      format.json { render json: @shops }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_shop
