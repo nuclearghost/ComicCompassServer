@@ -1,5 +1,6 @@
 class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
+  before_filter :authorize, :except => [:index, :show, :query]
 
   # GET /shops
   # GET /shops.json
@@ -84,5 +85,17 @@ class ShopsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def shop_params
       params.require(:shop).permit(:company, :address, :address2, :city, :state, :scf, :zip, :zip4, :mailscore, :sic1code, :sic1, :sic2code, :sic2, :sic3code, :sic3, :sic4code, :sic4, :latitude, :longitude)
+    end
+
+    def admin?
+        false
+    end
+
+    def authorize
+        unless  admin?
+            flash[:error] = "Unauthorized access"
+            redirect_to shops_url 
+            false
+        end
     end
 end
