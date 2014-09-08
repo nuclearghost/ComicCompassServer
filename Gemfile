@@ -58,7 +58,6 @@ gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem 'tzinfo-data'
 gem 'validates_formatting_of'
-gem 'annotate', '~> 2.6.5'
 
 group :development, :test do
   gem 'dotenv-rails'
@@ -73,6 +72,7 @@ group :test do
 end
 
 group :development do
+  gem 'annotate', '~> 2.6.5'
   gem 'better_errors'
   gem 'pry-rails'
 end
